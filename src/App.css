@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "gothanBlack";
+  src: url("./Fonts/Gotham-Black.otf");
+}
+@font-face {
+  font-family: "gothanBold";
+  src: url("./Fonts/GothamBold.ttf");
+}
+@font-face {
+  font-family: "gothanMed";
+  src: url("./Fonts/GothamMedium.ttf");
+}
+@font-face {
+  font-family: "gothanLight";
+  src: url("./Fonts/GothamLight.ttf");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --color-dark-blue: #003a71;
+  --color-blue: #22bcef;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  font-family: gothanMed, sans-serif;
 }

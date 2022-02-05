@@ -1,5 +1,37 @@
 import React from "react";
 import "./Styles/Navbar.css";
+import { HashLink as Link } from "react-router-hash-link";
+
+const navItems = [
+  {
+    name: "VESTUÁRIO",
+    to: "/",
+  },
+  {
+    name: "BOLSAS E MOCHILAS",
+    to: "/",
+  },
+  {
+    name: "PAPELARIA",
+    to: "/",
+  },
+  {
+    name: "ACESSÓRIOS",
+    to: "/",
+  },
+  {
+    name: "ESPORTES",
+    to: "/",
+  },
+  {
+    name: "ESCOLAS E CURSOS",
+    to: "/",
+  },
+  {
+    name: "PROMOÇÕES",
+    to: "/",
+  },
+];
 
 function Navbar() {
   return (
@@ -30,7 +62,39 @@ function Navbar() {
               type="Submit"
               value="BUSCAR"
             />
+
+            <svg
+              width="61"
+              height="72"
+              xmlns="http://www.w3.org/2000/svg"
+              className="navbar__content__search__svg"
+            >
+              <g>
+                <path
+                  stroke="null"
+                  fill="#ffffff"
+                  d="m-98.898015,120.5l-26.823,-18.5l-1183.572,0l-26.822,18.5a4.4,4.4 0 0 1 -6.9,-3.622l0,-56.878a10,10 0 0 1 10,-10l1231,0a10,10 0 0 1 10,10l0,12.2l0.015,-0.009l0,44.685a4.4,4.4 0 0 1 -4.413,4.408a4.348,4.348 0 0 1 -2.485,-0.784zm153,-50l-26.823,-18.5l-17.294,0a10,10 0 0 1 -10,-10l0,-32a10,10 0 0 1 10,-10l41,0a10,10 0 0 1 10,10l0,12.2l0.015,-0.01l0,44.686a4.4,4.4 0 0 1 -4.414,4.408a4.349,4.349 0 0 1 -2.484,-0.784z"
+                />
+              </g>
+            </svg>
           </form>
+        </div>
+      </div>
+
+      <div className="navbar__topics">
+        <div className="navbar__topics__content">
+          <ul className="navbar__topics__content__items">
+            {navItems.map((item, index) => (
+              <Link to={item.to}>
+                <li
+                  className="navbar__topics__content__items__item"
+                  key={index}
+                >
+                  {item.name}
+                </li>
+              </Link>
+            ))}
+          </ul>
         </div>
       </div>
     </header>

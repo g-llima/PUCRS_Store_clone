@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Styles/Navbar.css";
 import { HashLink as Link } from "react-router-hash-link";
 
@@ -34,6 +34,15 @@ const navItems = [
 ];
 
 function Navbar() {
+  const [screenWidth, setScreenWidth] = useState(0);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  window.addEventListener("load", () => setScreenWidth(window.innerWidth));
+  window.addEventListener("resize", () => {
+    setScreenWidth(window.innerWidth);
+    setIsNavOpen(false);
+  });
+
   return (
     <header className="navbar">
       <div className="navbar__content">
@@ -79,17 +88,23 @@ function Navbar() {
             </svg>
           </form>
         </div>
+
+        {screenWidth <= 768 && (
+          <div
+            onClick={() => setIsNavOpen(!isNavOpen)}
+            className={`navbar__content__hamburguer ${
+              isNavOpen ? "navOpenIcon" : null
+            }`}
+          ></div>
+        )}
       </div>
 
-      <div className="navbar__topics">
+      <div className={`navbar__topics ${isNavOpen ? "openNav" : null}`}>
         <div className="navbar__topics__content">
           <ul className="navbar__topics__content__items">
             {navItems.map((item, index) => (
-              <Link to={item.to}>
-                <li
-                  className="navbar__topics__content__items__item"
-                  key={index}
-                >
+              <Link to={item.to} key={index}>
+                <li className="navbar__topics__content__items__item">
                   {item.name}
                 </li>
               </Link>

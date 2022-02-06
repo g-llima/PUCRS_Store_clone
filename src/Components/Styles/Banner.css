@@ -1,0 +1,22 @@
+.banner {
+  width: 90%;
+  max-width: 1270px;
+  margin: 0 auto;
+  background: var(--color-dark-blue);
+  text-align: center;
+  color: white;
+  padding: 10px 0;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+.banner__rightSvg {
+  position: absolute;
+  right: 0;
+  top: 3px;
+}
+.banner__leftSvg {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  transform: rotateY(180deg);
+}

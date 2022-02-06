@@ -1,0 +1,36 @@
+.card__product {
+  width: 300px;
+  height: 250px;
+  margin: 3rem;
+}
+.card__product__img {
+  width: 100%;
+  border: 1px solid var(--color-dark-blue);
+  border-radius: 5px;
+}
+.card__product__texts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card__product__texts__name {
+  margin: 1rem 0 1.5rem 0;
+  font-size: 20px;
+  color: var(--color-dark-blue);
+  font-family: gothanLight, sans-serif;
+  font-weight: bold;
+}
+.card__product__texts__price {
+  color: var(--color-dark-blue);
+}
+.card__product__texts__btn {
+  margin-top: 1rem;
+  padding: 6px 1rem;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid var(--color-dark-blue);
+  background: var(--color-dark-blue);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+

@@ -2,14 +2,14 @@ import "./App.css";
 
 import Navbar from "./Components/Navbar";
 import Slideshow from "./Components/Slideshow";
-import Banner from "./Components/Banner";
+import Card_Type from "./Components/Card_Type";
 
 function App() {
   return (
     <>
       <Navbar />
       <Slideshow />
-      <Banner />
+      <Card_Type />
     </>
   );
 }

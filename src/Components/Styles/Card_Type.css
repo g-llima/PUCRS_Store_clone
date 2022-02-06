@@ -1,0 +1,26 @@
+.cardType {
+  margin: 3rem;
+  width: 160px;
+  padding: 16px;
+  transition: all 0.3s;
+}
+.cardType__content {
+  display: flex;
+  flex-direction: column;
+}
+.cardType__content__img {
+  max-width: 120px;
+  transition: all 0.3s;
+}
+.cardType__content__text {
+  margin-top: 2rem;
+  font-weight: normal;
+  color: var(--color-dark-blue);
+  font-size: 1.4rem;
+}
+.cardType:hover {
+  box-shadow: 0 2px 5px #dbdbdb;
+}
+.cardType:hover .cardType__content__img {
+  transform: scale(1.1);
+}

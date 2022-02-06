@@ -3,10 +3,10 @@ import "./Styles/Slideshow.css";
 import { Slide } from "react-slideshow-image";
 
 const slideImages = [
-  "/Imgs/img1.webp",
-  "/Imgs/img2.webp",
-  "/Imgs/img3.jpg",
-  "/Imgs/img4.jpg",
+  "/Imgs/slideshow/img1.webp",
+  "/Imgs/slideshow/img2.webp",
+  "/Imgs/slideshow/img3.jpg",
+  "/Imgs/slideshow/img4.jpg",
 ];
 
 function Slideshow() {

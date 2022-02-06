@@ -1,5 +1,4 @@
 .cardType {
-  margin: 3rem;
   width: 160px;
   padding: 16px;
   transition: all 0.3s;
@@ -13,10 +12,11 @@
   transition: all 0.3s;
 }
 .cardType__content__text {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   font-weight: normal;
   color: var(--color-dark-blue);
-  font-size: 1.4rem;
+  text-align: center;
+  font-size: 1.3rem;
 }
 .cardType:hover {
   box-shadow: 0 2px 5px #dbdbdb;

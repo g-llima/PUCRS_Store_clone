@@ -2,14 +2,14 @@ import "./App.css";
 
 import Navbar from "./Components/Navbar";
 import Slideshow from "./Components/Slideshow";
-import Card_Type from "./Components/Card_Type";
+import Lines from "./Components/Lines";
 
 function App() {
   return (
     <>
       <Navbar />
       <Slideshow />
-      <Card_Type />
+      <Lines />
     </>
   );
 }

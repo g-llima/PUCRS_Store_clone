@@ -1,0 +1,47 @@
+@import "react-slideshow-image/dist/styles.css";
+.slideshow {
+  position: relative;
+  margin-top: 2.9rem;
+  z-index: 10;
+}
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  background-position: center;
+  justify-content: center;
+  background-size: cover;
+  height: calc(300px + 15vw);
+}
+.indicator {
+  position: relative;
+  bottom: calc(25px + 3vw);
+  background: white;
+  opacity: 0.5;
+  width: calc(5px + 1vw);
+  height: calc(5px + 1vw);
+  border-radius: 50%;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.indicator.active {
+  opacity: 1;
+}
+.indicator:hover {
+  opacity: 1;
+}
+@media only screen and (max-width: 1012px) {
+  .each-slide > div {
+    height: calc(200px + 10vw);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .slideshow {
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width: 581px) {
+  .each-slide > div {
+    height: calc(120px + 2vw);
+  }
+}

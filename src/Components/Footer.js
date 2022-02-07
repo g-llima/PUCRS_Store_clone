@@ -27,15 +27,46 @@ const c1Icons = [
   },
 ];
 
+const c2Items = [
+  {
+    text: "Esportes e Saúde",
+    link: "/",
+  },
+  {
+    text: "Papelaria",
+    link: "/",
+  },
+  {
+    text: "Vida no Campus",
+    link: "/",
+  },
+  {
+    text: "Ecossustentável",
+    link: "/",
+  },
+  {
+    text: "Coleções",
+    link: "/",
+  },
+  {
+    text: "Escolas e Cursos",
+    link: "/",
+  },
+  {
+    text: "Sou PUCRS",
+    link: "/",
+  },
+];
+
 function Footer() {
   return (
     <div className="footer">
       <div className="footer__content">
         <div className="footer__content__column1">
           <h3 className="footer__topicTitle">Institucional</h3>
-          <ul className="footer__content__column1__items">
+          <ul>
             {c1Items.map((item, index) => (
-              <li className="footer__content__column1__items__item" key={index}>
+              <li className="footer__content__column1__item" key={index}>
                 <Link to={item.link}>{item.text}</Link>
               </li>
             ))}
@@ -48,6 +79,17 @@ function Footer() {
               </a>
             ))}
           </div>
+        </div>
+
+        <div className="footer__content__column2">
+          <h3 className="footer__topicTitle">Linhas de Produto</h3>
+          <ul>
+            {c2Items.map((item, index) => (
+              <li className="footer__content__column2__item" key={index}>
+                <Link to={item.link}>{item.text}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import Slideshow from "./Components/Slideshow";
 import Lines from "./Components/Lines";
 import News from "./Components/News";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Slideshow />
       <Lines />
       <News />
+      <Footer />
     </>
   );
 }

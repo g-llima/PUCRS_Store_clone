@@ -18,9 +18,6 @@
   text-align: center;
   font-size: 1.3rem;
 }
-.cardType:hover {
-  box-shadow: 0 2px 5px #dbdbdb;
-}
 .cardType:hover .cardType__content__img {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
 }

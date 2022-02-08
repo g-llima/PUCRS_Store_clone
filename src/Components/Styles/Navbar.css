@@ -1,6 +1,5 @@
 .navbar {
   width: 100%;
-  height: 210px;
   position: sticky;
   top: 0;
   background-color: var(--color-dark-blue);
@@ -24,16 +23,12 @@
   font-family: gothanBlack, sans-serif;
 }
 .navbar__content__logo__icon {
-  width: calc(160px + 3vw);
-  position: relative;
-  bottom: 3rem;
-  overflow: hidden;
   bottom: calc(2rem + 1vw);
+  position: relative;
+  overflow: hidden;
 }
 .navbar__content__logo__text {
-  line-height: calc(20px + 1vw);
   letter-spacing: 4px;
-  font-size: calc(1.5rem + 1vw);
 }
 .navbar__content__search {
   margin-top: 4rem;

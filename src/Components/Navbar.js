@@ -5,7 +5,7 @@ import { HashLink as Link } from "react-router-hash-link";
 const navItems = [
   {
     name: "VESTUÁRIO",
-    to: "/",
+    to: "/vestuario",
   },
   {
     name: "BOLSAS E MOCHILAS",
@@ -45,7 +45,7 @@ function Navbar() {
   });
 
   const handleScroll = () => {
-    if (window.pageYOffset <= 700) {
+    if (window.pageYOffset < 700) {
       setScrollY(window.pageYOffset);
     }
   };
@@ -61,9 +61,7 @@ function Navbar() {
     <header
       className="navbar"
       style={{
-        height: `calc(210px - ${
-          window.scrollY <= 700 ? window.scrollY / 10 : 700 / 10
-        }px)`,
+        height: `calc(210px - ${scrollY / 10}px)`,
       }}
     >
       <div className="navbar__content">
@@ -83,7 +81,7 @@ function Navbar() {
             className="navbar__content__logo__icon"
             viewBox="580 0 800 300"
             style={{
-              width: `calc(160px + 3vw - ${scrollY / 20}px)`,
+              width: `calc(160px + 3vw - ${scrollY / 10}px)`,
             }}
           >
             <path

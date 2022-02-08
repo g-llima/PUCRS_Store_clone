@@ -1,19 +1,16 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./Components/Navbar";
-import Slideshow from "./Components/Slideshow";
-import Lines from "./Components/Lines";
-import News from "./Components/News";
-import Footer from "./Components/Footer";
+import HomePage from "./Pages/HomePage";
+import Vestuário from "./Pages/Vestuário";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Slideshow />
-      <Lines />
-      <News />
-      <Footer />
+      <Routes>
+        <Route path="*" element={<HomePage />} />
+        <Route path="/vestuario" element={<Vestuário />} />
+      </Routes>
     </>
   );
 }

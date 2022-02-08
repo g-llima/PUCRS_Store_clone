@@ -1,6 +1,7 @@
 @import "react-slideshow-image/dist/styles.css";
 .slideshow {
   position: relative;
+  overflow: hidden;
   margin-top: 2.9rem;
   z-index: 10;
 }
@@ -17,8 +18,8 @@
   bottom: calc(25px + 3vw);
   background: white;
   opacity: 0.5;
-  width: calc(5px + 1vw);
-  height: calc(5px + 1vw);
+  width: calc(5px + 0.8vw);
+  height: calc(5px + 0.8vw);
   border-radius: 50%;
   margin: 0 6px;
   cursor: pointer;
@@ -28,6 +29,29 @@
   opacity: 1;
 }
 .indicator:hover {
+  opacity: 1;
+}
+.slideArrowB,
+.slideArrowF {
+  position: relative;
+  opacity: 0;
+  transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+}
+.slideArrowB {
+  right: 3rem;
+}
+.slideArrowF {
+  left: 3rem;
+}
+.slideshow:hover .slideArrowB {
+  right: -2rem;
+  opacity: 1;
+}
+.slideshow:hover .slideArrowF {
+  left: -2rem;
   opacity: 1;
 }
 @media only screen and (max-width: 1012px) {

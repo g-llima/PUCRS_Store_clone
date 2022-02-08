@@ -1,0 +1,14 @@
+.vestuário__content {
+  padding-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 1270px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.vestuário__content__banner {
+  position: relative;
+}
+.navArrow:last-child {
+  opacity: 0;
+}

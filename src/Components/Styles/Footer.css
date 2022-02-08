@@ -1,10 +1,12 @@
 .footer {
   width: 100%;
-  height: 500px;
+  padding-top: 3rem;
   background: var(--color-dark-blue);
 }
 .footer__content {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   max-width: 1280px;
   padding: 2rem;
@@ -20,6 +22,9 @@
 .footer__content__column2__item,
 .footer__topicTitle {
   margin-bottom: 1.3rem;
+}
+.footer__content__column2 {
+  padding: 0 1rem;
 }
 .footer__topicTitle2 {
   margin: 3rem 0 10px 0;
@@ -110,4 +115,33 @@
 .footer__content__column3__texts__map {
   margin-top: 1rem;
   font-size: 17px;
+}
+.footer__content__column3__logo {
+  max-width: 300px;
+  margin-top: 3rem;
+}
+@media only screen and (max-width: 774px) {
+  .footer__content {
+    justify-content: space-evenly;
+  }
+  .footer__content__column3 {
+    margin-top: 3rem;
+  }
+}
+@media only screen and (max-width: 424px) {
+  .footer__content__column2 {
+    margin-top: 3rem;
+    margin-right: 2rem;
+  }
+  .footer__content__column3__texts {
+    padding: 0 1rem;
+  }
+  .footer__content__column3__email {
+    font-size: 20px;
+    text-align: center;
+  }
+  .footer__content__column3__phone {
+    font-size: 22px;
+    margin-left: 28px;
+  }
 }

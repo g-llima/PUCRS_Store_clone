@@ -142,6 +142,13 @@ function Footer() {
               </a>
             </p>
           </div>
+          <Link to="/">
+            <img
+              className="footer__content__column3__logo"
+              src="/Imgs/footer/logo-pucrs.webp"
+              alt="PUCRS"
+            />
+          </Link>
         </div>
       </div>
     </div>

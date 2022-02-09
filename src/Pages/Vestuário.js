@@ -17,11 +17,11 @@ function Vestuário() {
 
   useEffect(() => {
     getDocs(colRef).then((snapshot) => {
-      let postData = [];
-      snapshot.docs.forEach((doc) => {
-        postData.push({ ...doc.data(), id: doc.id });
-        setProduct(postData);
-      });
+      const newProducts = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setProduct(newProducts);
     });
   }, []);
 
@@ -40,7 +40,6 @@ function Vestuário() {
             { nome: "Vestuário", link: "/vestuario" },
           ]}
         />
-
         <div className="vestuário__content__filtro">
           <button
             className="vestuário__content__filtro__btn"

@@ -27,15 +27,18 @@
 .card__product__imgContainer img {
   height: 300px;
   width: 90%;
+  object-fit: cover;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
   transition: all 0.3s;
   z-index: -1;
 }
 .card__product:hover .card__product__imgContainer img {
-  -moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
 }
 .card__product__texts {
   display: flex;
@@ -64,6 +67,7 @@
   cursor: pointer;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
   transition: all 0.3s;
 }
 .card__product:hover .card__product__texts__btn {

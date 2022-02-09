@@ -5,7 +5,7 @@ function Card_Product({
   nome = "Conjunto Necessaire",
   preço = "99",
   imgLink = "/Imgs/test.webp",
-  especial = true,
+  especial = false,
   textoEspecial = "NOVIDADE",
 }) {
   return (

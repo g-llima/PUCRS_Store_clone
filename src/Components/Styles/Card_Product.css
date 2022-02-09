@@ -1,11 +1,11 @@
 .card__product {
-  width: 300px;
-  height: 420px;
+  width: 280px;
+  height: 440px;
   margin-bottom: 2rem;
   cursor: pointer;
 }
 .card__product__imgContainer {
-  width: 300px;
+  width: 280px;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -25,7 +25,7 @@
   background: var(--color-blue);
 }
 .card__product__imgContainer img {
-  height: 300px;
+  height: 280px;
   width: 90%;
   object-fit: cover;
   -moz-transition: all 0.3s;

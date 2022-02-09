@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../Components/Styles/PagesCSS/Vestuario.css";
+import { db } from "../FirebaseDB/database";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 
 function Vestuário() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="vestuário">
       <Navbar />
@@ -36,7 +38,7 @@ function Vestuário() {
             ></i>
           </button>
           <div
-            class={`vestuário__content__filtro__dropdown ${
+            className={`vestuário__content__filtro__dropdown ${
               isFilterOpen ? "filterOpen" : null
             }`}
           >

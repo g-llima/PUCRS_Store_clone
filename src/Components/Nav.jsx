@@ -6,12 +6,12 @@ function Nav({ navItems = [{ nome: "Nome", link: "/" }] }) {
   return (
     <nav className="nav">
       {navItems.map((item, index) => (
-        <>
-          <Link to={item.link} key={index}>
+        <div key={index}>
+          <Link to={item.link} >
             {item.nome}
           </Link>
           <i className="fal fa-angle-right navArrow"></i>
-        </>
+        </div>
       ))}
     </nav>
   );

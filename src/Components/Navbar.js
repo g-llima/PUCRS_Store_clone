@@ -100,7 +100,8 @@ function Navbar() {
             <input
               className="navbar__content__search__form__submitBtn"
               type="Submit"
-              value="BUSCAR"
+              placeholder="BUSCAR"
+              defaultValue="BUSCAR"
             />
 
             <svg

@@ -19,7 +19,11 @@ function ProductPage() {
         />
         <div className="productPage__content">
           <div className="productPage__content__imgWrapper">
-            <img src="http://placehold.jp/500x500.png" alt="#" />
+            <img
+              className="productPage__content__imgWrapper__img"
+              src="http://placehold.jp/500x500.png"
+              alt="#"
+            />
           </div>
 
           <div className="productPage__content__data">

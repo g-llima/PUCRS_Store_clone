@@ -32,29 +32,41 @@ function ProductPage() {
             </p>
 
             <div className="productPage__content__data__sizes">
-              <span>P</span>
-              <span>M</span>
-              <span>G</span>
-              <span>GG</span>
+              <span className="productPage__content__data__sizes__size">P</span>
+              <span className="productPage__content__data__sizes__size">M</span>
+              <span className="productPage__content__data__sizes__size">G</span>
+              <span className="productPage__content__data__sizes__size">
+                GG
+              </span>
             </div>
 
-            <div className="productPage__content__data__price">
-              <h1>R$ 42,00</h1>
-              <button>CONSULTAR ENTREGA</button>
+            <div className="productPage__content__data__buy">
+              <h1 className="productPage__content__data__buy__price">
+                R$ 42,00
+              </h1>
+              <button className="productPage__content__data__buy__btn">
+                CONSULTAR ENTREGA
+              </button>
             </div>
 
             <div className="productPage__content__data__description">
-              <h4>VESTUÁRIO</h4>
+              <h4 className="productPage__content__data__description__topic">
+                VESTUÁRIO
+              </h4>
               <hr />
-              <p>
+              <p className="productPage__content__data__description__discount">
                 Professores e Técnicos Administrativos possuem 10%. Promoções e
                 descontos não cumulativos.
               </p>
             </div>
 
             <div className="productPage__content__data__btns">
-              <button>PROMOÇÕES</button>
-              <button>CONDIÇÕES DE PAGAMENTO</button>
+              <button className="productPage__content__data__btns__btn">
+                PROMOÇÕES
+              </button>
+              <button className="productPage__content__data__btns__btn">
+                CONDIÇÕES DE PAGAMENTO
+              </button>
             </div>
           </div>
         </div>

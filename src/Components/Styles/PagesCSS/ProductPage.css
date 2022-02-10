@@ -26,7 +26,7 @@
 .productPage__content__data__sizes {
   margin-top: 10px;
 }
-.productPage__content__data__sizes span {
+.productPage__content__data__sizes__size {
   font-family: gothanLight, sans-serif;
   color: white;
   font-size: 12px;
@@ -35,16 +35,25 @@
   border-radius: 2px;
   padding: 5px 7px;
   margin-right: 10px;
+  cursor: default;
+
+  transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
 }
-.productPage__content__data__price {
+.productPage__content__data__sizes__size:hover {
+  background: var(--color-blue);
+}
+.productPage__content__data__buy {
   margin: 2rem 0;
   display: flex;
   align-items: center;
 }
-.productPage__content__data__price h1 {
+.productPage__content__data__buy__price {
   font-size: 3.5rem;
 }
-.productPage__content__data__price button {
+.productPage__content__data__buy__btn {
   margin-left: 3rem;
   font-family: gothanLight, sans-serif;
   font-size: 1.4rem;
@@ -55,6 +64,18 @@
   border-radius: 10px;
   color: white;
   cursor: pointer;
+
+  transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.productPage__content__data__buy__btn:hover {
+  transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
 }
 .productPage__content__data__description {
   font-family: gothanLight, sans-serif;
@@ -63,11 +84,11 @@
   margin: 1rem 0;
 }
 .productPage__content__data__description hr,
-.productPage__content__data__description p,
+.productPage__content__data__description__discount,
 .productPage__content__data__btns {
   max-width: 60%;
 }
-.productPage__content__data__description p {
+.productPage__content__data__description__discount {
   color: rgb(126, 126, 126);
   margin-bottom: 2rem;
 }
@@ -75,7 +96,7 @@
   display: flex;
   justify-content: space-between;
 }
-.productPage__content__data__btns button {
+.productPage__content__data__btns__btn {
   padding: 10px 15px;
   letter-spacing: 1px;
   border: 1px solid transparent;
@@ -83,4 +104,17 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
+  bottom: 0;
+
+  transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.productPage__content__data__btns__btn:hover {
+  background: white;
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
+  bottom: 3px;
 }

@@ -90,8 +90,12 @@
 .productPage__content__data__description hr {
   margin: 1rem 0;
 }
-.productPage__content__data__description hr,
-.productPage__content__data__description__discount,
+.productPage__content__data__description hr {
+  max-width: 70%;
+}
+.productPage__content__data__description__discount {
+  max-width: 80%;
+}
 .productPage__content__data__btns {
   max-width: 60%;
 }

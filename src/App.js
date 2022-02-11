@@ -34,7 +34,15 @@ function App() {
             <Route
               key={index}
               path={`/${item.name.replace(/\s/g, "_")}`}
-              element={<ProductPage />}
+              element={
+                <ProductPage
+                  img1={item.img1}
+                  type={item.type}
+                  name={item.name}
+                  price={item.price}
+                  code={item.code}
+                />
+              }
             />
           ))}
         </Routes>

@@ -5,7 +5,11 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 
-function ProductPage() {
+function capitalizeString(str) {
+  return str.substring(0, 1).toUpperCase() + str.substring(1);
+}
+
+function ProductPage({ img1, type, name, price, code }) {
   return (
     <>
       <Navbar />
@@ -13,26 +17,24 @@ function ProductPage() {
         <Nav
           navItems={[
             { nome: "Home", link: "/" },
-            { nome: "Vestuário", link: "/Vestuario" },
-            { nome: "Camiseta PUCRS", link: "#" },
+            { nome: capitalizeString(type), link: `/${type}` },
+            { nome: name, link: "#" },
           ]}
         />
         <div className="productPage__content">
           <div className="productPage__content__imgWrapper">
             <img
               className="productPage__content__imgWrapper__img"
-              src="http://placehold.jp/500x500.png"
+              src={img1}
               alt="#"
             />
           </div>
 
           <div className="productPage__content__data">
-            <h2 className="productPage__content__data__productName">
-              Camiseta PUCRS
-            </h2>
+            <h2 className="productPage__content__data__productName">{name}</h2>
 
             <p className="productPage__content__data__productCode">
-              código: 1700
+              código: {code}
             </p>
 
             <div className="productPage__content__data__sizes">
@@ -46,7 +48,7 @@ function ProductPage() {
 
             <div className="productPage__content__data__buy">
               <h1 className="productPage__content__data__buy__price">
-                R$ 42,00
+                R$ {price}
               </h1>
               <button className="productPage__content__data__buy__btn">
                 CONSULTAR ENTREGA
@@ -55,7 +57,7 @@ function ProductPage() {
 
             <div className="productPage__content__data__description">
               <h4 className="productPage__content__data__description__topic">
-                VESTUÁRIO
+                {type.toUpperCase()}
               </h4>
               <hr />
               <p className="productPage__content__data__description__discount">

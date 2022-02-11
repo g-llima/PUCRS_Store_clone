@@ -29,7 +29,14 @@ function App() {
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="/vestuario" element={<Vestuário />} />
-          <Route path="/teste" element={<ProductPage />} />
+
+          {contextValue.map((item, index) => (
+            <Route
+              key={index}
+              path={`/${item.name.replace(/\s/g, "_")}`}
+              element={<ProductPage />}
+            />
+          ))}
         </Routes>
       </ProductContext.Provider>
     </>

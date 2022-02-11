@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import "../Components/Styles/PagesCSS/Vestuario.css";
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../FirebaseDB/database";
-
+import { ProductContext } from "../ProductContext";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
@@ -11,19 +9,14 @@ import CardProduct from "../Components/Card_Product";
 
 function Vestuário() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [product, setProduct] = useState([]);
+  const { contextValue } = useContext(ProductContext);
 
-  const colRef = collection(db, "products");
-
-  useEffect(() => {
-    getDocs(colRef).then((snapshot) => {
-      const newProducts = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setProduct(newProducts);
-    });
-  }, []);
+  let products = [];
+  contextValue.forEach((item) => {
+    if (item.type === "vestuario") {
+      products.push(item);
+    }
+  });
 
   return (
     <div className="vestuário">
@@ -73,7 +66,7 @@ function Vestuário() {
         </div>
 
         <div className="vestuário__content__products">
-          {product.map((item, index) => (
+          {products.map((item, index) => (
             <CardProduct
               key={index}
               nome={item.name}

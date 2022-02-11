@@ -6,11 +6,11 @@ function Nav({ navItems = [{ nome: "Nome", link: "/" }] }) {
   return (
     <nav className="nav">
       {navItems.map((item, index) => (
-        <div key={index}>
+        <div key={index} className="nav__content">
           <Link to={item.link} >
             {item.nome}
           </Link>
-          <i className="fal fa-angle-right navArrow"></i>
+          {navItems.length !== index + 1 && <i className="fal fa-angle-right navArrow"></i>}
         </div>
       ))}
     </nav>

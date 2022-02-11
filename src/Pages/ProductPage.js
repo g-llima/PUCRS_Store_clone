@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../Components/Styles/PagesCSS/ProductPage.css";
 import Navbar from "../Components/Navbar";
@@ -9,7 +9,12 @@ function capitalizeString(str) {
   return str.substring(0, 1).toUpperCase() + str.substring(1);
 }
 
+const formQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20];
+
 function ProductPage({ img1, type, name, price, code }) {
+  const [isOpenBuyForm, setIsOpenBuyForm] = useState(false);
+  const [isQuantityOpen, setIsQuantityOpen] = useState(false);
+
   return (
     <>
       <Navbar />
@@ -50,7 +55,10 @@ function ProductPage({ img1, type, name, price, code }) {
               <h1 className="productPage__content__data__buy__price">
                 R$ {price}
               </h1>
-              <button className="productPage__content__data__buy__btn">
+              <button
+                className="productPage__content__data__buy__btn"
+                onClick={() => setIsOpenBuyForm(true)}
+              >
                 CONSULTAR ENTREGA
               </button>
             </div>
@@ -77,6 +85,45 @@ function ProductPage({ img1, type, name, price, code }) {
           </div>
         </div>
       </div>
+
+      {isOpenBuyForm && (
+        <div className="productForm">
+          <span
+            className="productForm__background"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsOpenBuyForm(false);
+            }}
+          ></span>
+          <form className="productForm__form">
+            <h2 className="productForm__form__title">
+              SOLICITAÇÃO DE ORÇAMENTO
+            </h2>
+
+            <div className="productForm__form__content">
+              <div className="productForm__form__product">
+                <h3 className="productForm__form__product__name">
+                  CAMISETA NOME DO CURSO - 1413
+                </h3>
+                <h3 className="productForm__form__product__price">R$42,00</h3>
+              </div>
+
+              <div className="productForm__form__inputs">
+                <div className="productForm__form__inputs__quantity">
+                  <select className="productForm__form__inputs__quantity__input">
+                    {formQuantity.map((item, index) => (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      )}
+
       <Footer />
     </>
   );

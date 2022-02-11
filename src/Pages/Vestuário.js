@@ -7,6 +7,14 @@ import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 import CardProduct from "../Components/Card_Product";
 
+function removeSpecial(str) {
+  str = str.replace("ã", "a");
+  str = str.replace("ç", "c");
+  str = str.replace(/[^a-zA-Z ]/g, "");
+  str = str.replace(/\s/g, "-");
+  return str;
+}
+
 function Vestuário() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { contextValue } = useContext(ProductContext);
@@ -69,6 +77,7 @@ function Vestuário() {
           {products.map((item, index) => (
             <CardProduct
               key={index}
+              cardLink={`/${removeSpecial(item.name)}`}
               nome={item.name}
               preço={item.price}
               imgLink={item.img1}

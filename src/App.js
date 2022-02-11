@@ -9,6 +9,14 @@ import HomePage from "./Pages/HomePage";
 import Vestuário from "./Pages/Vestuário";
 import ProductPage from "./Pages/ProductPage";
 
+function removeSpecial(str) {
+  str = str.replace("ã", "a");
+  str = str.replace("ç", "c");
+  str = str.replace(/[^a-zA-Z ]/g, "");
+  str = str.replace(/\s/g, "-");
+  return str;
+}
+
 function App() {
   const [contextValue, setContextValue] = useState([]);
 
@@ -33,7 +41,7 @@ function App() {
           {contextValue.map((item, index) => (
             <Route
               key={index}
-              path={`/${item.name.replace(/\s/g, "_")}`}
+              path={`/${removeSpecial(item.name)}`}
               element={
                 <ProductPage
                   img1={item.img1}

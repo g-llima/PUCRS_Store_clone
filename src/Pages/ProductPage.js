@@ -102,23 +102,82 @@ function ProductPage({ img1, type, name, price, code }) {
 
             <div className="productForm__form__content">
               <div className="productForm__form__product">
-                <h3 className="productForm__form__product__name">
-                  CAMISETA NOME DO CURSO - 1413
-                </h3>
-                <h3 className="productForm__form__product__price">R$42,00</h3>
-              </div>
+                <div className="productForm__form__product__info">
+                  <h3 className="productForm__form__product__name">
+                    CAMISETA NOME DO CURSO - 1413
+                  </h3>
+                  <h3 className="productForm__form__product__price">R$42,00</h3>
+                </div>
 
-              <div className="productForm__form__inputs">
-                <div className="productForm__form__inputs__quantity">
-                  <select className="productForm__form__inputs__quantity__input">
-                    {formQuantity.map((item, index) => (
-                      <option key={index} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
+                <div className="productForm__form__inputs">
+                  <div className="productForm__form__inputs__quantity">
+                    <select className="productForm__form__inputs__quantity__input">
+                      {formQuantity.map((item, index) => (
+                        <option key={index} value={item}>
+                          {item}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
+
+              <div className="productForm__form__inputs__user">
+                <input
+                  className="productForm__form__inputs__user__input buyI1"
+                  placeholder="NOME"
+                  type="text"
+                />
+                <input
+                  className="productForm__form__inputs__user__input buyI2"
+                  placeholder="TELEFONE"
+                  type="phone"
+                />
+                <input
+                  className="productForm__form__inputs__user__input buyI3"
+                  placeholder="E-MAIL"
+                  type="email"
+                />
+                <input
+                  className="productForm__form__inputs__user__input buyI4"
+                  placeholder="CEP"
+                  type="number"
+                />
+                <input
+                  className="productForm__form__inputs__user__input buyI5"
+                  placeholder="ENDEREÇO"
+                  type="text"
+                />
+                <input
+                  className="productForm__form__inputs__user__input buyI6"
+                  placeholder="Nº"
+                  type="number"
+                />
+                <input
+                  className="productForm__form__inputs__user__input buyI7"
+                  placeholder="COMPLEMENTO"
+                  type="text"
+                />
+                <select className="productForm__form__inputs__user__input buyI8">
+                  <option value="Porto Alegre">Porto Alegre</option>
+                </select>
+
+                <select className="productForm__form__inputs__user__input buyI9">
+                  <option value="RS">RS</option>
+                </select>
+
+                <textarea
+                  maxLength="200"
+                  placeholder="MENSAGEM"
+                  id="productForm__form__inputs__user__textArea"
+                ></textarea>
+              </div>
+              <button
+                className="productForm__form__inputs__submitBtn"
+                type="submit"
+              >
+                ENVIAR
+              </button>
             </div>
           </form>
         </div>

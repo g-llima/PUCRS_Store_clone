@@ -171,9 +171,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 .productForm__form__title {
   text-align: center;
+}
+.productForm__form__product {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
 .productForm__form__product__name {
   margin-top: 2rem;
@@ -183,6 +190,119 @@
   margin-top: 10px;
   font-family: gothanLight, sans-serif;
 }
+.productForm__form__inputs__user {
+  margin-top: 2rem;
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+}
+.buyI1 {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+.buyI2 {
+  grid-column: 4 / 8;
+  grid-row: 1 / 2;
+}
+.buyI3 {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+}
+.buyI4 {
+  grid-column: 4 / 8;
+  grid-row: 2 / 3;
+}
+.buyI5 {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+}
+.buyI6 {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+}
+.buyI7 {
+  grid-column: 5 / 8;
+  grid-row: 3 / 4;
+}
+.buyI8 {
+  grid-column: 1 / 4;
+  grid-row: 4 / 5;
+}
+.buyI9 {
+  grid-column: 4 / 8;
+  grid-row: 4 / 5;
+}
+#productForm__form__inputs__user__textArea {
+  border: 1px solid var(--color-dark-blue);
+  color: var(--color-dark-blue);
+  font-size: 18px;
+  font-family: gothanLight, sans-serif;
+  border-radius: 10px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  grid-column: 1 / 8;
+  grid-row: 5 / 9;
+}
+.productForm__form__inputs__user__input {
+  font-size: 16px;
+  font-family: gothanLight, sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid var(--color-dark-blue);
+  overflow: hidden;
+}
+.productForm__form__inputs__user__input {
+  color: var(--color-dark-blue);
+}
+.productForm__form__inputs__user__input::-webkit-input-placeholder,
+#productForm__form__inputs__user__textArea::-webkit-input-placeholder {
+  color: var(--color-dark-blue);
+  transition: color 0.1s;
+  -webkit-transition: color 0.1s;
+}
+.productForm__form__inputs__user__input:focus::-webkit-input-placeholder,
+#productForm__form__inputs__user__textArea:focus::-webkit-input-placeholder {
+  color: #999;
+}
+
+.productForm__form__inputs__user__input:-moz-placeholder,
+#productForm__form__inputs__user__textArea:-moz-placeholder {
+  color: var(--color-dark-blue);
+  transition: color 0.1s;
+  -moz-transition: color 1s;
+}
+.productForm__form__inputs__user__input:focus:-moz-placeholder,
+#productForm__form__inputs__user__textArea:focus:-moz-placeholder {
+  color: #999;
+}
+
+/* Firefox > 19 */
+.productForm__form__inputs__user__input::-moz-placeholder,
+#productForm__form__inputs__user__textArea::-moz-placeholder {
+  color: var(--color-dark-blue);
+  transition: color 0.1s;
+  -moz-transition: color 1s;
+}
+.productForm__form__inputs__user__input:focus::-moz-placeholder,
+#productForm__form__inputs__user__textArea:focus::-moz-placeholder {
+  color: #999;
+}
+
+/* Internet Explorer 10 */
+.productForm__form__inputs__user__input:-ms-input-placeholder,
+#productForm__form__inputs__user__textArea:-ms-input-placeholder {
+  color: var(--color-dark-blue);
+  transition: color 0.1s;
+  -o-transition: color 0.1s;
+}
+.productForm__form__inputs__user__input:focus:-ms-input-placeholder,
+#productForm__form__inputs__user__textArea:focus:-ms-input-placeholder {
+  color: #999;
+}
 .productForm__form__inputs__quantity__input {
   padding: 12px 8rem 12px 1rem;
   border: 1px solid var(--color-dark-blue);
@@ -190,7 +310,27 @@
   color: var(--color-dark-blue);
   outline: none;
 }
-
+.productForm__form__inputs__submitBtn {
+  margin-top: 2rem;
+  padding: 10px 5rem;
+  font-size: 16px;
+  background: var(--color-blue);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid var(--color-blue);
+  cursor: pointer;
+  position: relative;
+  bottom: 0;
+  transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.productForm__form__inputs__submitBtn:hover {
+  background: white;
+  bottom: 5px;
+  color: var(--color-blue);
+}
 @media only screen and (max-width: 1024px) {
   .productPage__content {
     flex-direction: column;

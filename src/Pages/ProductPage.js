@@ -15,6 +15,7 @@ const formQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20];
 
 function ProductPage({ img1, type, name, price, code }) {
   const [isOpenBuyForm, setIsOpenBuyForm] = useState(false);
+  const [formSucess, setFormSucess] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const calcPrice = price.replace(",", ".");
 
@@ -28,8 +29,8 @@ function ProductPage({ img1, type, name, price, code }) {
         process.env.REACT_APP_BUY_FORM_USER_ID
       )
       .then(
-        (result) => {
-          console.log(result.text);
+        () => {
+          setFormSucess(true);
         },
         (error) => {
           console.log(error.text);
@@ -270,7 +271,9 @@ function ProductPage({ img1, type, name, price, code }) {
           </form>
         </div>
       )}
-      <Alert icon="fal fa-check-circle" text="Solicitação enviada!" />
+      {formSucess && (
+        <Alert icon="fal fa-check-circle" text="Solicitação enviada!" />
+      )}
       <Footer />
     </>
   );

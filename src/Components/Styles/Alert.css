@@ -1,7 +1,7 @@
 .alert {
   position: fixed;
   bottom: 2rem;
-  left: 2rem;
+  right: 2rem;
   background: var(--color-blue);
   border-radius: 10px;
   display: flex;

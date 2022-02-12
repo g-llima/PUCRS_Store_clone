@@ -19,7 +19,9 @@
   --color-dark-blue: #003a71;
   --color-blue: #22bcef;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 * {
   margin: 0;
   padding: 0;

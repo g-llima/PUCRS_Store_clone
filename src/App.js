@@ -5,6 +5,7 @@ import { db } from "./FirebaseDB/database";
 import { Routes, Route } from "react-router-dom";
 
 import { ProductContext } from "./ProductContext";
+import ScrollToTop from "./ScrollToTop";
 import HomePage from "./Pages/HomePage";
 import Vestuário from "./Pages/Vestuário";
 import ProductPage from "./Pages/ProductPage";
@@ -34,6 +35,7 @@ function App() {
   return (
     <>
       <ProductContext.Provider value={{ contextValue, setContextValue }}>
+        <ScrollToTop />
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="/vestuario" element={<Vestuário />} />

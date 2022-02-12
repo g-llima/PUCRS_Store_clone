@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import emailjs from "emailjs-com";
 
 import "../Components/Styles/PagesCSS/ProductPage.css";
+import Alert from "../Components/Alert";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
@@ -36,6 +37,7 @@ function ProductPage({ img1, type, name, price, code }) {
       );
     e.target.reset();
     setQuantity(1);
+    setIsOpenBuyForm(false);
   }
 
   return (
@@ -268,7 +270,7 @@ function ProductPage({ img1, type, name, price, code }) {
           </form>
         </div>
       )}
-
+      <Alert icon="fal fa-check-circle" text="Solicitação enviada!" />
       <Footer />
     </>
   );

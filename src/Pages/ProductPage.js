@@ -188,6 +188,11 @@ function ProductPage({ img1, type, name, price, code }) {
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI2"
+                  onInput={(e) =>
+                    (e.target.value = e.target.value
+                      .replace(/[^0-9.]/g, "")
+                      .replace(/(\..*?)\..*/g, "$1"))
+                  }
                   placeholder="TELEFONE"
                   type="text"
                   min="1"

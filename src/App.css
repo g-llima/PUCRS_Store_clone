@@ -34,6 +34,17 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+/*      REMOVER A SETA NO LADO DO INPUT NUMBER*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 body {
   font-family: gothanMed, sans-serif;

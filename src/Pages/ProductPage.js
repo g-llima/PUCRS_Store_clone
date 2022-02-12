@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 import "../Components/Styles/PagesCSS/ProductPage.css";
 import Navbar from "../Components/Navbar";
@@ -8,14 +9,34 @@ import Nav from "../Components/Nav";
 function capitalizeString(str) {
   return str.substring(0, 1).toUpperCase() + str.substring(1);
 }
+
 const formQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20];
 
 function ProductPage({ img1, type, name, price, code }) {
   const [isOpenBuyForm, setIsOpenBuyForm] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
   const calcPrice = price.replace(",", ".");
-  console.log(quantity);
+
+  function sendEmail(e) {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "gmail",
+        process.env.REACT_APP_BUY_FORM_TEMPLATE_ID,
+        e.target,
+        process.env.REACT_APP_BUY_FORM_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+    setQuantity(1);
+  }
 
   return (
     <>
@@ -95,11 +116,16 @@ function ProductPage({ img1, type, name, price, code }) {
             onClick={(e) => {
               e.preventDefault();
               setIsOpenBuyForm(false);
+              setQuantity(1);
             }}
           ></span>
-          <form className="productForm__form">
+
+          <form className="productForm__form" onSubmit={sendEmail}>
             <button
-              onClick={() => setIsOpenBuyForm(false)}
+              onClick={() => {
+                setIsOpenBuyForm(false);
+                setQuantity(1);
+              }}
               type="button"
               className="closeBuyForm__wrapper"
             >
@@ -112,10 +138,25 @@ function ProductPage({ img1, type, name, price, code }) {
             <div className="productForm__form__content">
               <div className="productForm__form__product">
                 <div className="productForm__form__product__info">
+                  <input
+                    type="hidden"
+                    name="productName"
+                    value={
+                      name +
+                      ", <br/>Código: " +
+                      code +
+                      ", <br/>Valor: R$ " +
+                      parseInt(calcPrice * quantity) +
+                      " (TOTAL)"
+                    }
+                  />
                   <h3 className="productForm__form__product__name">
                     {name} - {code}
                   </h3>
-                  <h3 className="productForm__form__product__price">
+                  <h3
+                    className="productForm__form__product__price"
+                    name="price"
+                  >
                     R$ {parseInt(calcPrice * quantity)}
                   </h3>
                 </div>
@@ -125,6 +166,7 @@ function ProductPage({ img1, type, name, price, code }) {
                     <select
                       className="productForm__form__inputs__quantity__input"
                       onChange={(e) => setQuantity(e.currentTarget.value)}
+                      name="quantity"
                     >
                       {formQuantity.map((item, index) => (
                         <option key={index} value={item}>
@@ -141,42 +183,66 @@ function ProductPage({ img1, type, name, price, code }) {
                   className="productForm__form__inputs__user__input buyI1"
                   placeholder="NOME"
                   type="text"
+                  name="name"
+                  required
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI2"
                   placeholder="TELEFONE"
-                  type="phone"
+                  type="text"
+                  min="1"
+                  minLength="11"
+                  maxLength="11"
+                  name="phone"
+                  required
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI3"
                   placeholder="E-MAIL"
                   type="email"
+                  name="email"
+                  required
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI4"
                   placeholder="CEP"
                   type="number"
+                  min="1"
+                  name="zipcode"
+                  required
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI5"
                   placeholder="ENDEREÇO"
                   type="text"
+                  name="address"
+                  required
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI6"
                   placeholder="Nº"
                   type="number"
+                  min="1"
+                  name="number"
+                  required
                 />
                 <input
                   className="productForm__form__inputs__user__input buyI7"
                   placeholder="COMPLEMENTO"
                   type="text"
+                  name="comp"
                 />
-                <select className="productForm__form__inputs__user__input buyI8">
+                <select
+                  className="productForm__form__inputs__user__input buyI8"
+                  name="city"
+                >
                   <option value="Porto Alegre">Porto Alegre</option>
                 </select>
 
-                <select className="productForm__form__inputs__user__input buyI9">
+                <select
+                  className="productForm__form__inputs__user__input buyI9"
+                  name="estate"
+                >
                   <option value="RS">RS</option>
                 </select>
 
@@ -184,6 +250,7 @@ function ProductPage({ img1, type, name, price, code }) {
                   maxLength="200"
                   placeholder="MENSAGEM"
                   id="productForm__form__inputs__user__textArea"
+                  name="msg"
                 ></textarea>
               </div>
               <button

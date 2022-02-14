@@ -10,6 +10,14 @@ import Nav from "../Components/Nav";
 function capitalizeString(str) {
   return str.substring(0, 1).toUpperCase() + str.substring(1);
 }
+function convertPrice(value) {
+  value = value.toString();
+  return (
+    value.substring(0, value.length - 2) +
+    "," +
+    value.substring(value.length - 2)
+  );
+}
 
 const formQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20];
 
@@ -17,7 +25,6 @@ function ProductPage({ img1, type, name, price, code }) {
   const [isOpenBuyForm, setIsOpenBuyForm] = useState(false);
   const [formSucess, setFormSucess] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const calcPrice = price.replace(",", ".");
 
   function sendEmail(e) {
     e.preventDefault();
@@ -79,7 +86,7 @@ function ProductPage({ img1, type, name, price, code }) {
 
             <div className="productPage__content__data__buy">
               <h1 className="productPage__content__data__buy__price">
-                R$ {price}
+                R$ {convertPrice(price)}
               </h1>
               <button
                 className="productPage__content__data__buy__btn"
@@ -149,7 +156,7 @@ function ProductPage({ img1, type, name, price, code }) {
                       ", <br/>Código: " +
                       code +
                       ", <br/>Valor: R$ " +
-                      parseInt(calcPrice * quantity) +
+                      convertPrice(parseInt(price * quantity)) +
                       " (TOTAL)"
                     }
                   />
@@ -160,7 +167,7 @@ function ProductPage({ img1, type, name, price, code }) {
                     className="productForm__form__product__price"
                     name="price"
                   >
-                    R$ {parseInt(calcPrice * quantity)}
+                    R$ {convertPrice(parseInt(price * quantity))}
                   </h3>
                 </div>
 

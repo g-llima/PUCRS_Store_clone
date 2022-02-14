@@ -14,7 +14,14 @@ function removeSpecial(str) {
   str = str.replace(/\s/g, "-");
   return str;
 }
-
+function convertPrice(value) {
+  value = value.toString();
+  return (
+    value.substring(0, value.length - 2) +
+    "," +
+    value.substring(value.length - 2)
+  );
+}
 function Vestuário() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { contextValue } = useContext(ProductContext);
@@ -79,7 +86,7 @@ function Vestuário() {
               key={index}
               cardLink={`/${removeSpecial(item.name)}`}
               nome={item.name}
-              preço={item.price}
+              preço={convertPrice(item.price)}
               imgLink={item.img1}
             />
           ))}

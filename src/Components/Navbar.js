@@ -9,27 +9,27 @@ const navItems = [
   },
   {
     name: "BOLSAS E MOCHILAS",
-    to: "/",
+    to: "/vestuario",
   },
   {
     name: "PAPELARIA",
-    to: "/",
+    to: "/vestuario",
   },
   {
     name: "ACESSÓRIOS",
-    to: "/",
+    to: "/vestuario",
   },
   {
     name: "ESPORTES",
-    to: "/",
+    to: "/vestuario",
   },
   {
     name: "ESCOLAS E CURSOS",
-    to: "/",
+    to: "/vestuario",
   },
   {
     name: "PROMOÇÕES",
-    to: "/",
+    to: "/vestuario",
   },
 ];
 

@@ -357,16 +357,24 @@
 }
 
 /*RELATED PRODUCTS*/
+.relatedProducts {
+  margin: 0 1rem;
+}
 .relatedProducts__items {
   max-width: 1200px;
   margin: 5rem auto;
+}
+.slick-arrow {
+  overflow: hidden;
 }
 .slick-arrow::before {
   color: var(--color-blue);
 }
 .slick-slide {
-  width: 280px !important;
-  margin: 0 3.5rem;
+  float: right;
+}
+.slick-cloned {
+  width: 320px;
 }
 @media only screen and (max-width: 1024px) {
   .productPage__content {

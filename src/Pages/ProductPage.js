@@ -25,13 +25,28 @@ function convertPrice(value) {
 
 var settings = {
   dots: true,
+  speed: 1000,
+  arrows: false,
   infinite: true,
-  speed: 500,
-  arrows: true,
-  draggable: false,
-  infinite: false,
+  draggable: true,
   slidesToShow: 3,
   slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 936,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 628,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const formQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20];
@@ -312,7 +327,7 @@ function ProductPage({ img1, type, name, price, code }) {
       )}
 
       <div className="relatedProducts">
-        <Banner text="PRODUTOS RELACIONADOS" />
+        <Banner text="PRODUTOS RELACIONADOS" className="related__banner" />
         <Slider {...settings} className="relatedProducts__items">
           {relatedProducts.map((item, index) => (
             <Card_Product

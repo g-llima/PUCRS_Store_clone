@@ -12,10 +12,12 @@
   position: absolute;
   right: 0;
   top: 3px;
+  z-index: -1;
 }
 .banner__leftSvg {
   position: absolute;
   left: 0;
   top: 3px;
+  z-index: -1;
   transform: rotateY(180deg);
 }

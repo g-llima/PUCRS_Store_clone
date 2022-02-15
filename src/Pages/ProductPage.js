@@ -333,7 +333,7 @@ function ProductPage({ img1, type, name, price, code }) {
             <Card_Product
               key={index}
               nome={item.name}
-              preço={item.price}
+              preço={convertPrice(item.price)}
               imgLink={item.img1}
               cardLink={`/${removeSpecial(item.name)}`}
             />

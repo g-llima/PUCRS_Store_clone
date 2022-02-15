@@ -355,6 +355,19 @@
 .closeBuyForm__wrapper:hover .closeBuyFormIcon {
   transform: rotate(90deg);
 }
+
+/*RELATED PRODUCTS*/
+.relatedProducts__items {
+  max-width: 1200px;
+  margin: 5rem auto;
+}
+.slick-arrow::before {
+  color: var(--color-blue);
+}
+.slick-slide {
+  width: 280px !important;
+  margin: 0 3.5rem;
+}
 @media only screen and (max-width: 1024px) {
   .productPage__content {
     flex-direction: column;

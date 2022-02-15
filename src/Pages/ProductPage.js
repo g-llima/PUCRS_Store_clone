@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import emailjs from "emailjs-com";
+import Slider from "react-slick";
 
 import "../Components/Styles/PagesCSS/ProductPage.css";
+import { ProductContext } from "../ProductContext";
 import Alert from "../Components/Alert";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
+import Banner from "../Components/Banner";
+import Card_Product from "../Components/Card_Product";
 
 function capitalizeString(str) {
   return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -19,13 +23,38 @@ function convertPrice(value) {
   );
 }
 
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  arrows: true,
+  draggable: false,
+  infinite: false,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+};
+
 const formQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20];
 
 function ProductPage({ img1, type, name, price, code }) {
   const [isOpenBuyForm, setIsOpenBuyForm] = useState(false);
   const [formSucess, setFormSucess] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const { contextValue } = useContext(ProductContext);
 
+  let relatedProducts = [];
+  contextValue.forEach((item) => {
+    if (item.type === type) {
+      relatedProducts.push(item);
+    }
+  });
+  function removeSpecial(str) {
+    str = str.replace("ã", "a");
+    str = str.replace("ç", "c");
+    str = str.replace(/[^a-zA-Z ]/g, "");
+    str = str.replace(/\s/g, "-");
+    return str;
+  }
   function sendEmail(e) {
     e.preventDefault();
     emailjs
@@ -281,6 +310,22 @@ function ProductPage({ img1, type, name, price, code }) {
       {formSucess && (
         <Alert icon="fal fa-check-circle" text="Solicitação enviada!" />
       )}
+
+      <div className="relatedProducts">
+        <Banner text="PRODUTOS RELACIONADOS" />
+        <Slider {...settings} className="relatedProducts__items">
+          {relatedProducts.map((item, index) => (
+            <Card_Product
+              key={index}
+              nome={item.name}
+              preço={item.price}
+              imgLink={item.img1}
+              cardLink={`/${removeSpecial(item.name)}`}
+            />
+          ))}
+        </Slider>
+      </div>
+
       <Footer />
     </>
   );

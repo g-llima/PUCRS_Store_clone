@@ -61,7 +61,7 @@ function Navbar() {
     <header
       className="navbar"
       style={{
-        height: `calc(210px - ${scrollY / 10}px)`,
+        height: `calc(210px - ${Math.round(scrollY / 10)}px)`,
       }}
     >
       <div className="navbar__content">

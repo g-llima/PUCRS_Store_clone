@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Styles/News.css";
 
 import Banner from "./Banner.jsx";
@@ -34,6 +34,13 @@ const sampleProducts = [
       "https://firebasestorage.googleapis.com/v0/b/pucrs-store.appspot.com/o/4.webp?alt=media&token=ce37d317-5015-40cb-8e2b-1d614e30b258",
   },
 ];
+function removeSpecial(str) {
+  str = str.replace("ã", "a");
+  str = str.replace("ç", "c");
+  str = str.replace(/[^a-zA-Z ]/g, "");
+  str = str.replace(/\s/g, "-");
+  return str;
+}
 
 function News() {
   return (
@@ -45,6 +52,7 @@ function News() {
             nome={item.name}
             preço={item.price}
             imgLink={item.imgLink}
+            cardLink={`/${removeSpecial(item.name)}`}
             especial={item.especial}
             key={index}
           />

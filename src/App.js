@@ -20,15 +20,22 @@ function removeSpecial(str) {
 
 function App() {
   const [contextValue, setContextValue] = useState([]);
+  const [novidades, setNovidades] = useState([]);
 
   const colRef = collection(db, "products");
   useEffect(() => {
     getDocs(colRef).then((snapshot) => {
+      const novidades = snapshot.docs.map((doc) => {
+        if (doc.data().novidade === true) {
+          return { ...doc.data(), id: doc.id };
+        }
+      });
       const newProducts = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setContextValue(newProducts);
+      setNovidades(novidades);
     });
   }, []);
 
@@ -55,6 +62,25 @@ function App() {
               }
             />
           ))}
+
+          {novidades.map(
+            (item, index) =>
+              item !== undefined && (
+                <Route
+                  key={index}
+                  path={`/${removeSpecial(item.name)}`}
+                  element={
+                    <ProductPage
+                      img1={item.img1}
+                      type={item.type}
+                      name={item.name}
+                      price={item.price}
+                      code={item.code}
+                    />
+                  }
+                />
+              )
+          )}
         </Routes>
       </ProductContext.Provider>
     </>

@@ -5,8 +5,6 @@ import Slider from "react-slick";
 import "../Components/Styles/PagesCSS/ProductPage.css";
 import { ProductContext } from "../ProductContext";
 import Alert from "../Components/Alert";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 import Banner from "../Components/Banner";
 import Card_Product from "../Components/Card_Product";
@@ -94,7 +92,6 @@ function ProductPage({ img1, type, name, price, code }) {
 
   return (
     <>
-      <Navbar />
       <div className="productPage">
         <Nav
           navItems={[
@@ -340,8 +337,6 @@ function ProductPage({ img1, type, name, price, code }) {
           ))}
         </Slider>
       </div>
-
-      <Footer />
     </>
   );
 }

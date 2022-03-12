@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import "../Components/Styles/PagesCSS/Vestuario.css";
 import { ProductContext } from "../ProductContext";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 import CardProduct from "../Components/Card_Product";
 
@@ -33,9 +31,15 @@ function Vestuário() {
     }
   });
 
+  var menorPreco = products.slice(0);
+  menorPreco.sort(function (a, b) {
+    var x = a.price;
+    var y = b.price;
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+
   return (
     <div className="vestuário">
-      <Navbar />
       <div className="vestuário__content">
         <img
           src="/Imgs/vestuario/banner_vestuario.webp"
@@ -92,7 +96,6 @@ function Vestuário() {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import { db } from "./FirebaseDB/database";
 import { Routes, Route } from "react-router-dom";
 
 import { ProductContext } from "./ProductContext";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import ScrollToTop from "./ScrollToTop";
 import HomePage from "./Pages/HomePage";
 import Vestuário from "./Pages/Vestuário";
@@ -43,6 +45,7 @@ function App() {
     <>
       <ProductContext.Provider value={{ contextValue, setContextValue }}>
         <ScrollToTop />
+        <Navbar />
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="/vestuario" element={<Vestuário />} />
@@ -82,6 +85,7 @@ function App() {
               )
           )}
         </Routes>
+        <Footer />
       </ProductContext.Provider>
     </>
   );

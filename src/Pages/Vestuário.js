@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import "../Components/Styles/PagesCSS/Vestuario.css";
 import { ProductContext } from "../ProductContext";
@@ -24,18 +24,11 @@ function Vestuário() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { contextValue } = useContext(ProductContext);
 
-  let products = [];
+  let proTemp = [];
   contextValue.forEach((item) => {
     if (item.type === "vestuario") {
-      products.push(item);
+      proTemp.push(item);
     }
-  });
-
-  var menorPreco = products.slice(0);
-  menorPreco.sort(function (a, b) {
-    var x = a.price;
-    var y = b.price;
-    return x < y ? -1 : x > y ? 1 : 0;
   });
 
   return (
@@ -56,6 +49,7 @@ function Vestuário() {
           <button
             className="vestuário__content__filtro__btn"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
+            disabled
           >
             ORGANIZAR POR
             <i
@@ -85,7 +79,7 @@ function Vestuário() {
         </div>
 
         <div className="vestuário__content__products">
-          {products.map((item, index) => (
+          {proTemp.map((item, index) => (
             <CardProduct
               key={index}
               cardLink={`/${removeSpecial(item.name)}`}

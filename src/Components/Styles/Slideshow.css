@@ -2,7 +2,6 @@
 .slideshow {
   position: relative;
   overflow: hidden;
-  margin-top: 2.9rem;
   z-index: 10;
 }
 .each-slide > div {

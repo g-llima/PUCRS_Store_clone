@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Styles/Navbar.css";
 import { HashLink as Link } from "react-router-hash-link";
 
@@ -35,7 +35,6 @@ const navItems = [
 
 function Navbar() {
   const [screenWidth, setScreenWidth] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   window.addEventListener("load", () => setScreenWidth(window.innerWidth));
@@ -44,35 +43,14 @@ function Navbar() {
     setIsNavOpen(false);
   });
 
-  const handleScroll = () => {
-    if (window.pageYOffset < 700) {
-      setScrollY(window.pageYOffset);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <header
-      className="navbar"
-      style={{
-        height: `calc(210px - ${Math.round(scrollY / 10)}px)`,
-      }}
-    >
+    <header className="navbar">
       <div className="navbar__content">
-        <div className="navbar__content__logo">
-          <h1
-            className="navbar__content__logo__text"
-            style={{
-              fontSize: `calc(1.5rem + 1vw - ${scrollY / 100}px)`,
-              lineHeight: `calc(20px + 1vw - ${scrollY / 100}px)`,
-            }}
-          >
+        <div
+          className="navbar__content__logo"
+          onClick={() => setIsNavOpen(false)}
+        >
+          <h1 className="navbar__content__logo__text">
             <Link to="/">
               PUCRS
               <br />
@@ -83,9 +61,6 @@ function Navbar() {
             <svg
               className="navbar__content__logo__icon"
               viewBox="580 0 800 300"
-              style={{
-                width: `calc(160px + 3vw - ${scrollY / 10}px)`,
-              }}
             >
               <path
                 fill="#fff"
@@ -127,11 +102,15 @@ function Navbar() {
 
         {screenWidth <= 768 && (
           <div
+            className="navbar__content__mobileBTN"
             onClick={() => setIsNavOpen(!isNavOpen)}
-            className={`navbar__content__hamburguer ${
-              isNavOpen ? "navOpenIcon" : null
-            }`}
-          ></div>
+          >
+            <div
+              className={`navbar__content__hamburguer ${
+                isNavOpen ? "navOpenIcon" : null
+              }`}
+            ></div>
+          </div>
         )}
       </div>
 
@@ -140,7 +119,10 @@ function Navbar() {
           <ul className="navbar__topics__content__items">
             {navItems.map((item, index) => (
               <Link to={item.to} key={index}>
-                <li className="navbar__topics__content__items__item">
+                <li
+                  className="navbar__topics__content__items__item"
+                  onClick={() => setIsNavOpen(false)}
+                >
                   {item.name}
                 </li>
               </Link>

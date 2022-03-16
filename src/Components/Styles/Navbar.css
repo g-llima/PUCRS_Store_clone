@@ -24,6 +24,7 @@
 }
 .navbar__content__logo__icon {
   bottom: calc(2rem + 1vw);
+  width: 120px;
   position: relative;
   overflow: hidden;
 }
@@ -37,6 +38,7 @@
 .navbar__content__search__form {
   display: flex;
   position: relative;
+  margin-bottom: 1rem;
 }
 .navbar__content__search__form__input {
   padding: 14px 14px 14px 20px;
@@ -72,8 +74,13 @@
 
   z-index: -1;
 }
-.navbar__content__hamburguer__container {
-  background: red;
+.navbar__content__mobileBTN {
+  position: relative;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  z-index: 9999;
 }
 .navbar__content__hamburguer {
   width: 40px;
@@ -81,8 +88,7 @@
   background: white;
   display: none;
   position: absolute;
-  right: 2rem;
-  z-index: 9999;
+  bottom: 1.5rem;
   transition: all 0.3s;
 }
 .navbar__content__hamburguer::after,

@@ -82,12 +82,14 @@ function Header() {
               type="text"
               placeholder="O que você deseja pesquisar?"
             />
-            <input
-              className="navbar__content__search__form__submitBtn"
-              type="Submit"
-              placeholder="BUSCAR"
-              defaultValue="BUSCAR"
-            />
+            <Link to="/buscar">
+              <input
+                className="navbar__content__search__form__submitBtn"
+                type="Submit"
+                placeholder="BUSCAR"
+                defaultValue="BUSCAR"
+              />
+            </Link>
 
             {/* BOTTOM RIGHT SVG */}
             <svg

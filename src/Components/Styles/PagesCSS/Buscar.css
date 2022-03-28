@@ -1,0 +1,23 @@
+.search {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+.search__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search__content__header {
+  font-size: 1.8rem;
+  color: var(--color-dark-blue);
+}
+.search__content__header span {
+  font-weight: 200;
+  font-family: gothanLight, sans-serif;
+}
+.search__content__resultLength {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  font-family: gothanLight, sans-serif;
+}

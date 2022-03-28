@@ -11,6 +11,7 @@ import ScrollToTop from "./ScrollToTop";
 import HomePage from "./Pages/HomePage";
 import Vestuário from "./Pages/Vestuário";
 import ProductPage from "./Pages/ProductPage";
+import Buscar from "./Pages/Buscar";
 
 // FUNCTION TO REMOVE TEXT SPECIAL CHARACTERS
 function removeSpecial(str) {
@@ -44,6 +45,7 @@ function App() {
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="/vestuario" element={<Vestuário />} />
+          <Route path="/buscar" element={<Buscar />} />
 
           {/* DYNAMIC URL FOR EVERY PRODUCT */}
           {contextValue.map((item, index) => (

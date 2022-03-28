@@ -92,11 +92,13 @@ const properties = {
   ],
 };
 
+// HOMEPAGE LINES CARDS
 function Lines() {
   return (
     <div className="lines">
       <Banner text="LINHAS" />
       <Slide {...properties} className="lines__items">
+        {/* LINES CARDS ITEMS */}
         {cards.map((item, index) => (
           <Card_Type
             key={index}

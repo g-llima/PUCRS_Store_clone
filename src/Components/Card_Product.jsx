@@ -3,12 +3,12 @@ import "./Styles/Card_Product.css";
 import { HashLink as Link } from "react-router-hash-link";
 
 function Card_Product({
-  nome = "Conjunto Necessaire",
-  preço = "99",
-  imgLink = "/Imgs/test.webp",
+  nome,
+  preço,
+  imgLink,
   especial = false,
   textoEspecial = "NOVIDADE",
-  cardLink = "/",
+  cardLink,
 }) {
   return (
     <>

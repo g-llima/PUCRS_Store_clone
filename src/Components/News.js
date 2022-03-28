@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Styles/News.css";
 
 import Banner from "./Banner.jsx";
 import Card_Product from "./Card_Product";
 
+// HARD CODED PRODUCTS FOR TESTING
 const sampleProducts = [
   {
     name: "Conjunto Necessaire",
@@ -34,6 +35,8 @@ const sampleProducts = [
       "https://firebasestorage.googleapis.com/v0/b/pucrs-store.appspot.com/o/4.webp?alt=media&token=ce37d317-5015-40cb-8e2b-1d614e30b258",
   },
 ];
+
+// REMOVE SPECIAL CHARACTERS FROM STRING (URL CLEAN)
 function removeSpecial(str) {
   str = str.replace("ã", "a");
   str = str.replace("ç", "c");
@@ -47,6 +50,7 @@ function News() {
     <div className="news">
       <Banner text="NOVIDADE" />
       <div className="news__procuts">
+        {/* 'NOVIDADE' PRODUCTS ITEMS */}
         {sampleProducts.map((item, index) => (
           <Card_Product
             nome={item.name}

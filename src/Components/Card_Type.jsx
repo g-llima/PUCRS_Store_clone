@@ -2,11 +2,8 @@ import React from "react";
 import "./Styles/Card_Type.css";
 import { HashLink as Link } from "react-router-hash-link";
 
-function Card_Type({
-  name = "EMPTY",
-  icon = "papelaria.webp",
-  redirectUrl = "/",
-}) {
+// LINE CARDS
+function Card_Type({ name, icon, redirectUrl }) {
   return (
     <>
       <Link to={redirectUrl}>

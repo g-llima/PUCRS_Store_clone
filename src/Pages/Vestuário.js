@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import "../Components/Styles/PagesCSS/Vestuario.css";
 import { ProductContext } from "../ProductContext";
@@ -21,15 +21,19 @@ function convertPrice(value) {
   );
 }
 function Vestuário() {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(true);
+  const [products, setProducts] = useState([]);
   const { contextValue } = useContext(ProductContext);
 
-  let proTemp = [];
-  contextValue.forEach((item) => {
-    if (item.type === "vestuario") {
-      proTemp.push(item);
-    }
-  });
+  let tempProducts = [];
+  useEffect(() => {
+    contextValue.map((item) => {
+      if (item.type == "vestuario") {
+        tempProducts.push(item);
+      }
+    });
+    setProducts(tempProducts);
+  }, [contextValue]);
 
   return (
     <div className="vestuário">
@@ -49,37 +53,64 @@ function Vestuário() {
           <button
             className="vestuário__content__filtro__btn"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
-            disabled
           >
             ORGANIZAR POR
-            <i
-              className={`fal fa-angle-down filterArrow ${
-                isFilterOpen ? "filterArrowRot" : null
-              }`}
-            ></i>
           </button>
+
           <div
             className={`vestuário__content__filtro__dropdown ${
               isFilterOpen ? "filterOpen" : null
             }`}
           >
-            <button className="vestuário__content__filtro__dropdown__item">
+            <button
+              className="vestuário__content__filtro__dropdown__item"
+              onClick={() => {
+                setProducts([
+                  ...products.sort((a, b) => (a.price >= b.price ? 1 : -1)),
+                ]);
+                setIsFilterOpen(false);
+              }}
+            >
               Menor preço
             </button>
-            <button className="vestuário__content__filtro__dropdown__item">
+            <button
+              className="vestuário__content__filtro__dropdown__item"
+              onClick={() => {
+                setProducts([
+                  ...products.sort((a, b) => (a.price <= b.price ? 1 : -1)),
+                ]);
+                setIsFilterOpen(false);
+              }}
+            >
               Maior Preço
             </button>
-            <button className="vestuário__content__filtro__dropdown__item">
+            <button
+              className="vestuário__content__filtro__dropdown__item"
+              onClick={() => {
+                setProducts([
+                  ...products.sort((a, b) => (a.name >= b.name ? 1 : -1)),
+                ]);
+                setIsFilterOpen(false);
+              }}
+            >
               A-Z
             </button>
-            <button className="vestuário__content__filtro__dropdown__item">
+            <button
+              className="vestuário__content__filtro__dropdown__item"
+              onClick={() => {
+                setProducts([
+                  ...products.sort((a, b) => (a.name <= b.name ? 1 : -1)),
+                ]);
+                setIsFilterOpen(false);
+              }}
+            >
               Z-A
             </button>
           </div>
         </div>
 
         <div className="vestuário__content__products">
-          {proTemp.map((item, index) => (
+          {products.map((item, index) => (
             <CardProduct
               key={index}
               cardLink={`/${removeSpecial(item.name)}`}

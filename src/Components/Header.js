@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Styles/Navbar.css";
+import "./Styles/Header.css";
 import { HashLink as Link } from "react-router-hash-link";
 
 const navItems = [
@@ -33,7 +33,7 @@ const navItems = [
   },
 ];
 
-function Navbar() {
+function Header() {
   const [screenWidth, setScreenWidth] = useState(0);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -46,10 +46,12 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar__content">
+        {/* PUCRS STORE LOGO */}
         <div
           className="navbar__content__logo"
           onClick={() => setIsNavOpen(false)}
         >
+          {/* LOGO TEXT */}
           <h1 className="navbar__content__logo__text">
             <Link to="/">
               PUCRS
@@ -57,6 +59,8 @@ function Navbar() {
               STORE
             </Link>
           </h1>
+
+          {/* LOGO "P" ICON */}
           <Link to="/">
             <svg
               className="navbar__content__logo__icon"
@@ -69,6 +73,8 @@ function Navbar() {
             </svg>
           </Link>
         </div>
+
+        {/* SEARCH INPUT */}
         <div className="navbar__content__search">
           <form className="navbar__content__search__form">
             <input
@@ -83,6 +89,7 @@ function Navbar() {
               defaultValue="BUSCAR"
             />
 
+            {/* BOTTOM RIGHT SVG */}
             <svg
               width="61"
               height="72"
@@ -100,6 +107,7 @@ function Navbar() {
           </form>
         </div>
 
+        {/* MOBILE NAV */}
         {screenWidth <= 768 && (
           <div
             className="navbar__content__mobileBTN"
@@ -114,9 +122,11 @@ function Navbar() {
         )}
       </div>
 
+      {/* NAVBAR ITEMS */}
       <div className={`navbar__topics ${isNavOpen ? "openNav" : null}`}>
         <div className="navbar__topics__content">
           <ul className="navbar__topics__content__items">
+            {/* NAVBAR ITEMS ITEM */}
             {navItems.map((item, index) => (
               <Link to={item.to} key={index}>
                 <li
@@ -134,4 +144,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Header;

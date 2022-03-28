@@ -2,7 +2,7 @@ import React from "react";
 import "./Styles/Footer.css";
 import { HashLink as Link } from "react-router-hash-link";
 
-const c1Items = [
+const coluna1Items = [
   {
     text: "Sobre a PUCRS Store",
     link: "/",
@@ -16,7 +16,7 @@ const c1Items = [
     link: "/",
   },
 ];
-const c1Icons = [
+const coluna1Icons = [
   {
     icon: "fab fa-facebook-f",
     link: "https://www.facebook.com/pucrs/",
@@ -27,7 +27,7 @@ const c1Icons = [
   },
 ];
 
-const c2Items = [
+const coluna2Items = [
   {
     text: "Esportes e Saúde",
     link: "/",
@@ -62,10 +62,12 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer__content">
+        {/* COLUMN 1 */}
         <div className="footer__content__column1">
           <h3 className="footer__topicTitle">Institucional</h3>
+          {/* COLUMN 1 LINKS */}
           <ul>
-            {c1Items.map((item, index) => (
+            {coluna1Items.map((item, index) => (
               <li className="footer__content__column1__item" key={index}>
                 <Link className="footLink" to={item.link}>
                   {item.text}
@@ -73,9 +75,12 @@ function Footer() {
               </li>
             ))}
           </ul>
+
+          {/* COLUMN 1 BOTTOM */}
           <h3 className="footer__topicTitle2">Continue conectado</h3>
           <div className="footer__content__column1__icons">
-            {c1Icons.map((item, index) => (
+            {/* COLUMN 1 BOTTOM ICONS */}
+            {coluna1Icons.map((item, index) => (
               <a key={index} href={item.link} target="_blank">
                 <i className={`${item.icon} footerIcon`}></i>
               </a>
@@ -83,10 +88,12 @@ function Footer() {
           </div>
         </div>
 
+        {/* COLUMN 2 */}
         <div className="footer__content__column2">
           <h3 className="footer__topicTitle">Linhas de Produto</h3>
           <ul>
-            {c2Items.map((item, index) => (
+            {/* COLUMN 2 LINKS */}
+            {coluna2Items.map((item, index) => (
               <li className="footer__content__column2__item " key={index}>
                 <Link className="footLink" to={item.link}>
                   {item.text}
@@ -96,7 +103,9 @@ function Footer() {
           </ul>
         </div>
 
+        {/* COLUMN 3 */}
         <div className="footer__content__column3">
+          {/* COLUMN 3 PHONE */}
           <div className="footer__content__column3__phone">
             <i className="fal fa-phone-alt"></i>
             <a href="tel:+555133203500" className="footLink">
@@ -104,6 +113,7 @@ function Footer() {
             </a>
           </div>
 
+          {/* COLUMN 3 EMAIL */}
           <div className="footer__content__column3__email">
             <i className="fal fa-envelope"></i>
             <a href="mailto:pucrsstore@pucrs.br" className="footLink">
@@ -111,6 +121,7 @@ function Footer() {
             </a>
           </div>
 
+          {/* COLUMN 3 INFORMATION */}
           <div className="footer__content__column3__texts">
             <h4>Horário de atendimento:</h4>
             <p>
@@ -142,6 +153,8 @@ function Footer() {
               </a>
             </p>
           </div>
+
+          {/* COLUMN 3 LOGO */}
           <Link to="/">
             <img
               className="footer__content__column3__logo"

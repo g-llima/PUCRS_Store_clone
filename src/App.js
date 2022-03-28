@@ -5,13 +5,14 @@ import { db } from "./FirebaseDB/database";
 import { Routes, Route } from "react-router-dom";
 
 import { ProductContext } from "./ProductContext";
-import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./ScrollToTop";
 import HomePage from "./Pages/HomePage";
 import Vestuário from "./Pages/Vestuário";
 import ProductPage from "./Pages/ProductPage";
 
+// FUNCTION TO REMOVE TEXT SPECIAL CHARACTERS
 function removeSpecial(str) {
   str = str.replace("ã", "a");
   str = str.replace("ç", "c");
@@ -22,22 +23,16 @@ function removeSpecial(str) {
 
 function App() {
   const [contextValue, setContextValue] = useState([]);
-  const [novidades, setNovidades] = useState([]);
 
+  // GET PRODUCTS FROM DB AND ADD IT TO CONTEXTVALUE
   const colRef = collection(db, "products");
   useEffect(() => {
     getDocs(colRef).then((snapshot) => {
-      const novidades = snapshot.docs.map((doc) => {
-        if (doc.data().novidade === true) {
-          return { ...doc.data(), id: doc.id };
-        }
-      });
       const newProducts = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setContextValue(newProducts);
-      setNovidades(novidades);
     });
   }, []);
 
@@ -45,11 +40,12 @@ function App() {
     <>
       <ProductContext.Provider value={{ contextValue, setContextValue }}>
         <ScrollToTop />
-        <Navbar />
+        <Header />
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="/vestuario" element={<Vestuário />} />
 
+          {/* DYNAMIC URL FOR EVERY PRODUCT */}
           {contextValue.map((item, index) => (
             <Route
               key={index}
@@ -65,25 +61,6 @@ function App() {
               }
             />
           ))}
-
-          {novidades.map(
-            (item, index) =>
-              item !== undefined && (
-                <Route
-                  key={index}
-                  path={`/${removeSpecial(item.name)}`}
-                  element={
-                    <ProductPage
-                      img1={item.img1}
-                      type={item.type}
-                      name={item.name}
-                      price={item.price}
-                      code={item.code}
-                    />
-                  }
-                />
-              )
-          )}
         </Routes>
         <Footer />
       </ProductContext.Provider>

@@ -45,7 +45,7 @@ function App() {
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="/vestuario" element={<Vestuário />} />
-          <Route path="/buscar" element={<Buscar />} />
+          <Route path="/buscar/:s" element={<Buscar />} />
 
           {/* DYNAMIC URL FOR EVERY PRODUCT */}
           {contextValue.map((item, index) => (

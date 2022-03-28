@@ -21,3 +21,10 @@
   font-size: 1.1rem;
   font-family: gothanLight, sans-serif;
 }
+.search__content__products {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3rem auto;
+  flex-wrap: wrap;
+  width: 100%;
+}

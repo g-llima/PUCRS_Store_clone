@@ -1,25 +1,46 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import "../Components/Styles/PagesCSS/Buscar.css";
 import { ProductContext } from "../ProductContext";
+
 import Nav from "../Components/Nav.jsx";
+import CardProduct from "../Components/Card_Product.jsx";
+
+function removeSpecial(str) {
+  str = str.replace("ã", "a");
+  str = str.replace("ç", "c");
+  str = str.replace(/[^a-zA-Z ]/g, "");
+  str = str.replace(/\s/g, "-");
+  return str;
+}
+function convertPrice(value) {
+  value = value.toString();
+  return (
+    value.substring(0, value.length - 2) +
+    "," +
+    value.substring(value.length - 2)
+  );
+}
 
 function Buscar() {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("a");
 
   const { contextValue } = useContext(ProductContext);
+  const { s } = useParams();
 
   let tempProducts = [];
   useEffect(() => {
+    setSearch(s.substring(2));
+
     contextValue.map((item) => {
-      if (item["name"].toLowerCase().includes("conjunto")) {
+      if (item["name"].toLowerCase().includes(search)) {
         tempProducts.push(item);
       }
     });
     setProducts(tempProducts);
   }, [contextValue]);
-
-  console.log(products);
 
   return (
     <div className="search">
@@ -32,10 +53,24 @@ function Buscar() {
 
       <div className="search__content">
         <p className="search__content__header">
-          Você buscou por <span>a</span>
+          Você buscou por <span>{search}</span>
         </p>
 
-        <p className="search__content__resultLength">151 itens encontrados</p>
+        <p className="search__content__resultLength">
+          {products.length} itens encontrados
+        </p>
+
+        <div className="search__content__products">
+          {products.map((item, index) => (
+            <CardProduct
+              key={index}
+              cardLink={`/${removeSpecial(item.name)}`}
+              nome={item.name}
+              preço={convertPrice(item.price)}
+              imgLink={item.img1}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

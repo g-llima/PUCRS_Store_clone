@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Styles/Header.css";
+import { useNavigate } from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
 
 const navItems = [
@@ -36,12 +37,15 @@ const navItems = [
 function Header() {
   const [screenWidth, setScreenWidth] = useState(0);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   window.addEventListener("load", () => setScreenWidth(window.innerWidth));
   window.addEventListener("resize", () => {
     setScreenWidth(window.innerWidth);
     setIsNavOpen(false);
   });
+
+  let navigate = useNavigate();
 
   return (
     <header className="navbar">
@@ -76,20 +80,25 @@ function Header() {
 
         {/* SEARCH INPUT */}
         <div className="navbar__content__search">
-          <form className="navbar__content__search__form">
+          <form
+            className="navbar__content__search__form"
+            onSubmit={() => navigate(`/buscar/s=${searchInput}`)}
+          >
             <input
               className="navbar__content__search__form__input"
               type="text"
+              value={searchInput}
+              maxLength="20"
+              onChange={(e) => setSearchInput(e.target.value)}
               placeholder="O que você deseja pesquisar?"
+              required
             />
-            <Link to="/buscar">
-              <input
-                className="navbar__content__search__form__submitBtn"
-                type="Submit"
-                placeholder="BUSCAR"
-                defaultValue="BUSCAR"
-              />
-            </Link>
+            <input
+              className="navbar__content__search__form__submitBtn"
+              type="Submit"
+              placeholder="BUSCAR"
+              defaultValue="BUSCAR"
+            />
 
             {/* BOTTOM RIGHT SVG */}
             <svg

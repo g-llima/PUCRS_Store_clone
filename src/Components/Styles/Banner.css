@@ -8,6 +8,10 @@
   border-radius: 10px 10px 0 0;
   position: relative;
 }
+.banner__text {
+  font-size: calc(0.8rem + 1vw);
+  line-height: 35px;
+}
 .banner__rightSvg {
   position: absolute;
   right: 0;

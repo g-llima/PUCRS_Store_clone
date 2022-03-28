@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import "../Components/Styles/PagesCSS/Buscar.css";
 import { ProductContext } from "../ProductContext";
 
@@ -24,16 +23,15 @@ function convertPrice(value) {
 }
 
 function Buscar() {
+  const { s } = useParams();
   const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("a");
+  const [search] = useState(s.substring(2).toLowerCase());
 
   const { contextValue } = useContext(ProductContext);
-  const { s } = useParams();
 
   let tempProducts = [];
-  useEffect(() => {
-    setSearch(s.substring(2));
 
+  useEffect(() => {
     contextValue.map((item) => {
       if (item["name"].toLowerCase().includes(search)) {
         tempProducts.push(item);
@@ -52,25 +50,37 @@ function Buscar() {
       />
 
       <div className="search__content">
-        <p className="search__content__header">
-          Você buscou por <span>{search}</span>
-        </p>
+        {products.length === 0 ? (
+          <div className="search__content__notFound">
+            <p className="search__content__notFound__text">
+              Sua busca por <span>{search}</span> não encontrou nenhum resultado
+              :( <br />
+              Por favor, tente outra vez com termos menos específicos.
+            </p>
+          </div>
+        ) : (
+          <>
+            <p className="search__content__header">
+              Você buscou por <span>{search}</span>
+            </p>
 
-        <p className="search__content__resultLength">
-          {products.length} itens encontrados
-        </p>
+            <p className="search__content__resultLength">
+              {products.length} itens encontrados
+            </p>
 
-        <div className="search__content__products">
-          {products.map((item, index) => (
-            <CardProduct
-              key={index}
-              cardLink={`/${removeSpecial(item.name)}`}
-              nome={item.name}
-              preço={convertPrice(item.price)}
-              imgLink={item.img1}
-            />
-          ))}
-        </div>
+            <div className="search__content__products">
+              {products.map((item, index) => (
+                <CardProduct
+                  key={index}
+                  cardLink={`/${removeSpecial(item.name)}`}
+                  nome={item.name}
+                  preço={convertPrice(item.price)}
+                  imgLink={item.img1}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

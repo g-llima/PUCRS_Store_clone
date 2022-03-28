@@ -8,11 +8,23 @@
   align-items: center;
   justify-content: center;
 }
-.search__content__header {
-  font-size: 1.8rem;
-  color: var(--color-dark-blue);
+.search__content__notFound {
+  margin: 1rem 0 5rem 0;
+  text-align: center;
 }
-.search__content__header span {
+.search__content__notFound__text {
+  margin-bottom: 5rem;
+}
+.search__content__header,
+.search__content__notFound__text {
+  padding: 0 1rem;
+  font-size: calc(1rem + 0.5vw);
+  color: var(--color-dark-blue);
+  line-height: 2rem;
+  text-align: center;
+}
+.search__content__header span,
+.search__content__notFound span {
   font-weight: 200;
   font-family: gothanLight, sans-serif;
 }

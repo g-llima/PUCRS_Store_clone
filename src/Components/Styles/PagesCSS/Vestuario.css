@@ -70,6 +70,9 @@
   -moz-transition: all 0.2;
   -webkit-transition: all 0.2s;
 }
+.filterSelected {
+  color: var(--color-blue);
+}
 .filterOpen {
   height: 141px;
   opacity: 1;

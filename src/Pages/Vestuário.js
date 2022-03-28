@@ -21,8 +21,10 @@ function convertPrice(value) {
   );
 }
 function Vestuário() {
-  const [isFilterOpen, setIsFilterOpen] = useState(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [products, setProducts] = useState([]);
+  const [selected, setSelected] = useState(1);
+
   const { contextValue } = useContext(ProductContext);
 
   let tempProducts = [];
@@ -38,18 +40,24 @@ function Vestuário() {
   return (
     <div className="vestuário">
       <div className="vestuário__content">
+        {/* MIDDLE TOP BANNER */}
         <img
           src="/Imgs/vestuario/banner_vestuario.webp"
           alt="VESTUÁRIO"
           className="vestuário__content__banner"
         />
+
+        {/* NAVIGATION */}
         <Nav
           navItems={[
             { nome: "Home", link: "/" },
             { nome: "Vestuário", link: "/vestuario" },
           ]}
         />
+
+        {/* FILTER PRODUCTS */}
         <div className="vestuário__content__filtro">
+          {/* FILTER BUTTON */}
           <button
             className="vestuário__content__filtro__btn"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -57,51 +65,66 @@ function Vestuário() {
             ORGANIZAR POR
           </button>
 
+          {/* FILTER ITEMS */}
           <div
             className={`vestuário__content__filtro__dropdown ${
               isFilterOpen ? "filterOpen" : null
             }`}
           >
+            {/* - PRICE */}
             <button
-              className="vestuário__content__filtro__dropdown__item"
+              className={`vestuário__content__filtro__dropdown__item 
+              ${selected == 0 ? "filterSelected" : null}`}
               onClick={() => {
                 setProducts([
                   ...products.sort((a, b) => (a.price >= b.price ? 1 : -1)),
                 ]);
-                setIsFilterOpen(false);
+                setSelected(0);
               }}
             >
               Menor preço
             </button>
+
+            {/* + PRICE */}
             <button
-              className="vestuário__content__filtro__dropdown__item"
+              className={`vestuário__content__filtro__dropdown__item ${
+                selected == 1 ? "filterSelected" : null
+              }`}
               onClick={() => {
                 setProducts([
                   ...products.sort((a, b) => (a.price <= b.price ? 1 : -1)),
                 ]);
-                setIsFilterOpen(false);
+                setSelected(1);
               }}
             >
               Maior Preço
             </button>
+
+            {/* A-Z */}
             <button
-              className="vestuário__content__filtro__dropdown__item"
+              className={`vestuário__content__filtro__dropdown__item ${
+                selected == 2 ? "filterSelected" : null
+              }`}
               onClick={() => {
                 setProducts([
                   ...products.sort((a, b) => (a.name >= b.name ? 1 : -1)),
                 ]);
-                setIsFilterOpen(false);
+                setSelected(2);
               }}
             >
               A-Z
             </button>
+
+            {/* Z-A */}
             <button
-              className="vestuário__content__filtro__dropdown__item"
+              className={`vestuário__content__filtro__dropdown__item ${
+                selected == 3 ? "filterSelected" : null
+              }`}
               onClick={() => {
                 setProducts([
                   ...products.sort((a, b) => (a.name <= b.name ? 1 : -1)),
                 ]);
-                setIsFilterOpen(false);
+                setSelected(3);
               }}
             >
               Z-A
@@ -109,6 +132,7 @@ function Vestuário() {
           </div>
         </div>
 
+        {/* DISPLAY PRODUCTS */}
         <div className="vestuário__content__products">
           {products.map((item, index) => (
             <CardProduct

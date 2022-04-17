@@ -25,7 +25,7 @@ function removeSpecial(str) {
 function App() {
   const [contextValue, setContextValue] = useState([]);
 
-  // GET PRODUCTS FROM DB AND ADD IT TO CONTEXTVALUE
+  // GET PRODUCTS FROM DATABASE AND ADD IT TO CONTEXTVALUE
   const colRef = collection(db, "products");
   useEffect(() => {
     getDocs(colRef).then((snapshot) => {
